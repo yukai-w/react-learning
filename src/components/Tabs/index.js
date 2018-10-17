@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import TabNav from './TabNav';
+import TabContent from './TabContent';
 
 class Tabs extends Component {
   static propTypes = {
@@ -80,10 +82,28 @@ class Tabs extends Component {
       />
     )
   }
-  render() {
+
+  renderTabContent() {
+    const { classPrefix, children } = this.props;
+
     return (
-      <div className="section">
-       <h2>tabs</h2>
+      <TabContent
+        key="tabcontent"
+        classPrefix={classPrefix}
+        panels={children}
+        activeIndex={this.state.activeIndex}
+      />
+    )
+  }
+
+  render() {
+    const { className } = this.props;
+    // 合并class
+    const classes = classnames(className, 'ui-tabs');
+    return (
+      <div className={classes}>
+        {this.renderTabNav()}
+        {this.renderTabContent()}
       </div>
     );
   }
