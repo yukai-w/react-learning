@@ -12,3 +12,65 @@
 
 > react阻止事件冒泡不能阻止原生事件冒泡, 反而阻止原生的可以阻止react的
 
+### 样式
+
+css Modules
+
+### 组件间通信
+
+- 父组件向子组件通信
+- 子组件向父组件通信
+- 没有嵌套关系的组件之间通信
+
+#### 父组件向子组件通信
+
+通过props
+
+#### 子组件向父组件通信
+
+- 利用回调函数
+- 利用自定义事件机制
+
+#### 跨级组件通信
+
+利用contenxt
+```javascript
+// 子组件
+class Child {
+  static contextTypes = {
+    color: PropTypes.string,
+  }
+
+  render() {
+    return (
+      <div>{this.context.color}</div>
+    )
+  }
+}
+
+// 父组件
+class Father {
+  static childContextTypes = {
+    color: PropTypes.strng,
+  }
+
+  getChildContext() {
+    return {
+      color: 'red',
+    }
+  }
+}
+```
+
+> 不推荐
+
+### 组件间抽象
+
+在React组件的构建过程中, 有一些功能需要被不同的组件公用, 此时需要用到minxin和高阶组件.
+
+#### mixin
+
+对于广义的mixin方法, 就是用赋值的方式将mixin对象里面的方法都挂载到原对象上, 来实现对对象的混入.
+
+mdn上的解释是把任意多个源对象所拥有的自身可枚举属性赋值给目标对象, 然后返回目标对象.
+
