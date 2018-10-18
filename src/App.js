@@ -25,7 +25,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/*  */}
           <section className="section">
             <h3>react 三种创建方式</h3>
             <ul>
