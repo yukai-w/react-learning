@@ -51,6 +51,7 @@ class App extends Component {
             <p>2.ReactComponent render(ReactElement element, DOMelement container, [function callback])</p>
             <p>3.不常用 unmountComponentAtNode</p>
           </section>
+
           {/* tabs组件 */}
           <Tabs defaultActiveKey="1">
             <TabPane tab="Tab 1" key="1">Content of Tab Pane 1</TabPane>
